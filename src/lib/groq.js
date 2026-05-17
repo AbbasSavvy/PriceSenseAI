@@ -50,7 +50,7 @@ Analyze this proposed retail promotion and return ONLY a JSON object with exactl
 Promotion details:
 - Retailer category: ${p.category}
 - Product: ${p.product}
-- Current price: $${p.currentPrice}
+- Current price: ₹${p.currentPrice}
 - Proposed discount: ${p.discount}%
 - Duration: ${p.duration} days
 - Related SKUs in catalog: ${p.relatedSkus.join(', ')}
