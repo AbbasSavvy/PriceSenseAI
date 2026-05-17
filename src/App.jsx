@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Header from './components/Header'
 import PromotionForm from './components/PromotionForm'
 import AnalysisLoader from './components/AnalysisLoader'
+import RecommendationView from './components/RecommendationView'
 
 function App() {
   const [step, setStep] = useState('form')
@@ -18,6 +19,12 @@ function App() {
     setStep('results')
   }
 
+  function handleReset() {
+    setStep('form')
+    setPromotionData(null)
+    setResult(null)
+  }
+
   return (
     <div className="min-h-screen bg-gray-50">
       <Header />
@@ -31,7 +38,11 @@ function App() {
         />
       )}
       {step === 'results' && (
-        <p className="p-6">Results coming next — result keys: {Object.keys(result).join(', ')}</p>
+        <RecommendationView
+          result={result}
+          promotionData={promotionData}
+          onReset={handleReset}
+        />
       )}
     </div>
   )
