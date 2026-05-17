@@ -75,17 +75,17 @@ function RecommendationView({ result, promotionData, onReset }) {
         />
         <StatCard
           label="Discounted Price"
-          value={`₹${discountedPrice}`}
-          sub={`from ₹${promotionData.currentPrice}`}
+          value={`$${discountedPrice}`}
+          sub={`from $${promotionData.currentPrice}`}
         />
         <StatCard
           label="Revenue Impact"
-          value={`${result.revenue_impact >= 0 ? '+' : ''}₹${result.revenue_impact.toLocaleString()}`}
+          value={`${result.revenue_impact >= 0 ? '+' : ''}$${result.revenue_impact.toLocaleString()}`}
           sub="estimated over promo period"
         />
         <StatCard
           label="Profit Impact"
-          value={`${profitPositive ? '+' : ''}₹${result.profit_impact.toLocaleString()}`}
+          value={`${profitPositive ? '+' : ''}$${result.profit_impact.toLocaleString()}`}
           sub="net incremental profit"
         />
       </div>
@@ -121,7 +121,7 @@ function RecommendationView({ result, promotionData, onReset }) {
           </div>
           <p className="text-xs text-gray-500 mb-2 font-medium">SKUs likely to be affected:</p>
           <div className="flex flex-wrap gap-2">
-            {result.cannibalized_skus.length > 0
+            {Array.isArray(result.cannibalized_skus) && result.cannibalized_skus.length > 0
               ? result.cannibalized_skus.map(sku => (
                 <span key={sku} className="text-xs bg-gray-50 border border-gray-200 text-gray-600 px-2 py-1 rounded-full">
                   {sku}
@@ -138,7 +138,7 @@ function RecommendationView({ result, promotionData, onReset }) {
       <div className="bg-white rounded-xl border border-gray-200 p-5">
         <p className="text-sm font-semibold text-gray-700 mb-3">Why this recommendation?</p>
         <ul className="space-y-2">
-          {result.reasoning.map((reason, i) => (
+          {(Array.isArray(result.reasoning) ? result.reasoning : []).map((reason, i) => (
             <li key={i} className="flex items-start gap-3 text-sm text-gray-600">
               <span className="w-5 h-5 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">
                 {i + 1}

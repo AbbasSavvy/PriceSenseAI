@@ -12,53 +12,53 @@ const CATEGORIES = [
 
 const CATALOG = {
   'Specialty Food': [
-    'Salted Pistachios 250g',
-    'Salted Pistachios 500g',
-    'Salted Pistachios 1kg',
-    'Roasted Almonds 250g',
-    'Roasted Almonds 500g',
-    'Roasted Almonds 1kg',
+    'Salted Pistachios 8oz',
+    'Salted Pistachios 16oz',
+    'Salted Pistachios 32oz',
+    'Roasted Almonds 8oz',
+    'Roasted Almonds 16oz',
+    'Roasted Almonds 32oz',
     'Mixed Nuts Variety Pack',
   ],
   'Grocery': [
-    'Olive Oil 500ml',
-    'Pasta 500g',
-    'Canned Tomatoes 400g',
-    'Rice 1kg',
-    'Cereal 500g',
+    'Olive Oil 16.9oz',
+    'Pasta 16oz',
+    'Canned Tomatoes 14oz',
+    'Rice 32oz',
+    'Cereal 18oz',
   ],
   'Beverages': [
-    'Orange Juice 1L',
+    'Orange Juice 52oz',
     'Sparkling Water 12-pack',
     'Green Tea 20-pack',
-    'Cold Brew Coffee 1L',
-    'Lemonade 1.5L',
+    'Cold Brew Coffee 32oz',
+    'Lemonade 59oz',
   ],
   'Snacks & Nuts': [
-    'Trail Mix 300g',
+    'Trail Mix 10oz',
     'Granola Bars 6-pack',
-    'Popcorn 250g',
-    'Pretzels 500g',
-    'Cashews 350g',
+    'Popcorn 8oz',
+    'Pretzels 16oz',
+    'Cashews 12oz',
   ],
   'Dairy': [
-    'Full Cream Milk 1L',
-    'Greek Yogurt 1kg',
-    'Cheddar Cheese 500g',
-    'Butter 500g',
-    'Cream Cheese 250g',
+    'Whole Milk 1gal',
+    'Greek Yogurt 32oz',
+    'Cheddar Cheese 16oz',
+    'Butter 16oz',
+    'Cream Cheese 8oz',
   ],
   'Bakery': [
-    'Sourdough Bread 400g',
+    'Sourdough Bread 24oz',
     'Bagels 6-pack',
     'Croissants 4-pack',
     'Muffins 4-pack',
     'Dinner Rolls 12-pack',
   ],
   'Health & Wellness': [
-    'Protein Powder 1kg',
+    'Protein Powder 2lb',
     'Multivitamins 60-count',
-    'Collagen Peptides 300g',
+    'Collagen Peptides 10oz',
     'Omega-3 90-count',
     'Probiotic 30-count',
   ],
@@ -67,7 +67,7 @@ const CATALOG = {
 function PromotionForm({ onSubmit }) {
   const [form, setForm] = useState({
     category: 'Specialty Food',
-    product: 'Salted Pistachios 500g',
+    product: 'Salted Pistachios 16oz',
     currentPrice: '',
     discount: 20,
     duration: 7,
@@ -132,13 +132,13 @@ function PromotionForm({ onSubmit }) {
         {/* Row 2: Price + Discount + Duration */}
         <div className="grid grid-cols-3 gap-6">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Current Price (₹)</label>
+            <label className="block text-sm font-medium text-gray-700 mb-2">Current Price ($)</label>
             <input
               type="number"
               required
               min="0"
               step="0.01"
-              placeholder="e.g. 499"
+              placeholder="e.g. 12.99"
               value={form.currentPrice}
               onChange={e => setForm({ ...form, currentPrice: e.target.value })}
               className="w-full border border-gray-200 rounded-lg px-3 py-2 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500"
