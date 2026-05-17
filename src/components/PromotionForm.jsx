@@ -136,7 +136,8 @@ function PromotionForm({ onSubmit }) {
             <input
               type="number"
               required
-              min="0"
+              min="0.01"
+              max="99"
               step="0.01"
               placeholder="e.g. 12.99"
               value={form.currentPrice}
