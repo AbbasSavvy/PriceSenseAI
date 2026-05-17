@@ -26,7 +26,8 @@ You analyze proposed promotions and return a JSON object only — no explanation
 
   const data = await response.json()
   const text = data.choices[0].message.content
-  return JSON.parse(text)
+  const clean = text.replace(/```json|```/g, '').trim()
+  return JSON.parse(clean)
 }
 
 function buildPrompt(p) {

@@ -1,14 +1,21 @@
 import { useState } from 'react'
 import Header from './components/Header'
 import PromotionForm from './components/PromotionForm'
+import AnalysisLoader from './components/AnalysisLoader'
 
 function App() {
   const [step, setStep] = useState('form')
   const [promotionData, setPromotionData] = useState(null)
+  const [result, setResult] = useState(null)
 
   function handleFormSubmit(data) {
     setPromotionData(data)
     setStep('loading')
+  }
+
+  function handleAnalysisComplete(data) {
+    setResult(data)
+    setStep('results')
   }
 
   return (
@@ -18,7 +25,13 @@ function App() {
         <PromotionForm onSubmit={handleFormSubmit} />
       )}
       {step === 'loading' && (
-        <p className="p-6">Loading... (we will build this next)</p>
+        <AnalysisLoader
+          promotionData={promotionData}
+          onComplete={handleAnalysisComplete}
+        />
+      )}
+      {step === 'results' && (
+        <p className="p-6">Results coming next — result keys: {Object.keys(result).join(', ')}</p>
       )}
     </div>
   )
