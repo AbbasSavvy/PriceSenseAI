@@ -84,6 +84,18 @@ src/
 
 ---
 
+## Security
+
+**Prompt Injection Protection**
+
+The Additional Context field sanitizes user input before it reaches the LLM:
+- Input is truncated to 300 characters.
+- Common injection patterns are stripped (`ignore all previous instructions`, `act as`, `from now on`, Llama-specific tokens `[INST]`, `<<SYS>>` etc.).
+- The prompt explicitly instructs the LLM to treat the field as plain retailer notes only.
+
+
+---
+
 ## Architecture Note
 
 The API key is injected via Vercel environment variables and never committed to the repo. For production use, all LLM calls should be proxied through a backend API rather than called directly from the frontend.
